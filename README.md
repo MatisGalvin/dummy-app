@@ -1,28 +1,18 @@
-# Création d'un Dockerfile simple
+# Docker
 
-## Pour lancer le projet en local
+## Etape 1
 
-Il vous faut **NodeJS 20**.
-
+```bash
+  docker run -d -p 8080:8080 mon_image_node:latest 
 ```
-npm i
-node index.js
+## Etape 2
+
+```bash
+  docker run -d --env PORT=1337 -p 1337:1337 mon_image_node:latest 
 ```
 
-## Créer un Dockerfile pour cette application NodeJS
+## Etape 3
 
-Il s'agit d'une application web basique réalisée en NodeJS avec Express.
-
-* Vous devez **créer le Dockerfile** et **build l'image** pour lancer cette application.
-
-Vous devez optimiser votre image pour que l'étape d'installation des dépendances soit supprimée du cache **seulement si** vous modifiez le contenu du fichier `package.json` ou `package-lock.json`.
-
-## Configuration du container
-
-Une fois l'image créée vous pouvez découvrir les différents arguments disponibles pour créer et lancer un conteneur.
-
-* Vous devez lancer votre image afin d'accéder à l'application web **depuis votre navigateur sur votre hôte**.
-
-* Vous devez modifier la variable d'environnement `PORT` pour lancer le conteneur de l'application web avec le port **1337** à l'écoute.
-
-* Vous devez modifier le hostname de votre conteneur pour le faire correspondre à : **mydocker**.
+```bash
+  docker run -d --env PORT=1337 -p 1337:1337 --hostname mydocker mon_image_node:latest 
+```
